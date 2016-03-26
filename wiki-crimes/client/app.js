@@ -1,1 +1,1 @@
-angular.module('wiki-crimes', ['angular-meteor', 'ngGeolocation', 'ngMap', 'accounts.ui', 'angular-meteor.auth']);
+angular.module('wiki-crimes', ['angular-meteor', 'ngMap', 'accounts.ui', 'angular-meteor.auth']);
