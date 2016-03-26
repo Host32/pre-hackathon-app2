@@ -1,0 +1,26 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body ng-app="wiki-crimes">
+    <div class="container">
+        <div class="row">
+            <div ng-controller="mapaCrimesCadastrados">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Veja quem está perto de você!</div>
+                        <div class="panel-body">
+                            Latitude: {{location.coords.latitude}} Longitude: {{location.coords.longitude}}
+                            <ng-map zoom="4" center="{{mapLocation}}">
+                                <marker on-click="abreModal(tradutor)" position="{{tradutor.latitude}}, {{tradutor.longitude}}" ng-repeat="crimes in crimesCadastrados" icon="/beachflag.png">
+                                </marker>
+                            </ng-map>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
