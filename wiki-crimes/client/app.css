@@ -1,0 +1,31 @@
+body {
+    margin: 0px;
+    background: url(/bg01.jpg);
+    background-attachment: fixed;
+}
+.camuflagem {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+main {
+    padding: 5px 10px;
+}
+.container {
+    background: #dedede;
+    border-radius: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.navbar-collapse.in {
+    overflow-y: visible !Important;
+}
+@media(max-width: 992px) {
+    #login-buttons.login-buttons-dropdown-align-right #login-dropdown-list {
+        right: auto !Important;
+    }
+}

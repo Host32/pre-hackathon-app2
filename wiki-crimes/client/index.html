@@ -1,0 +1,50 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Wiki Crimes</title>
+</head>
+
+<body ng-app="wiki-crimes">
+    <div class="camuflagem">
+    </div>
+
+    <header>
+        <nav class="navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Wiki Crimes</a>
+                    <button type="button" data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle pull-right">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="navbar-nav nav">
+                        <li>
+                            <a href="#">Registrar um crime</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <login-buttons align="right"></login-buttons>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container content">
+            <div ng-if="currentUser">
+                <div>
+                    teste
+                </div>
+            </div>
+            <div ng-if="!currentUser">
+                <div>
+                    teste
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
