@@ -1,4 +1,4 @@
-[{
+estadosCidades = [{
       "sigla": "AC",
       "nome": "Acre",
       "cidades": [
