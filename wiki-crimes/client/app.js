@@ -41,12 +41,6 @@ angular
                 }).fetch().length;
             },
 
-            crimesCadastradosOutros: function () {
-                return Crimes.find({
-                    tipoCrime: 'outros'
-                }).fetch().length;
-            },
-
             crimesCadastradosViolenciaDomestica: function () {
                 return Crimes.find({
                     tipoCrime: 'violenciaDomestica'
