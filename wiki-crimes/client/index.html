@@ -61,12 +61,11 @@
                         <h4 class="modal-title" id="myModalLabel">Registrar um Crime</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal">
+                        <form name="cadastroCrime" class="form-horizontal" ng-submit="cadastroCrime.$valid && insereNovoCrime(novoCrime)">
                             <div class="form-group col-md-12">
                                 <label class="col-md-6 control-label">Tipo de Crime</label>
                                 <div class="col-sm-3">
-                                    <select ng-model="novoCrime.tipoCrime">
-                                        <option value=""></option>
+                                    <select ng-model="novoCrime.tipoCrime" required>
                                         <option value="furto">Furto</option>
                                         <option value="roubo">Roubo</option>
                                         <option value="tentativaFurto">Tentativa de Furto</option>
@@ -75,8 +74,7 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-3">
-                                    <select ng-model="novoCrime.outrosCrimes">
-                                        <option value=""></option>
+                                    <select ng-model="novoCrime.outrosCrimes" ng-if="novoCrime.tipoCrime == 'outros'" required>
                                         <option value="violencia">Violência</option>
                                         <option value="violenciaDomestica">Violência Doméstica</option>
                                         <option value="abusoAutoridade">Abuso de Autoridade</option>
@@ -89,7 +87,7 @@
                                 <div class="form-group col-md-12">
                                     <label class="col-md-6 control-label">Estado</label>
                                     <div class="col-sm-6">
-                                        <select id="estado" ng-model="novoCrime.estadoSelecionado" ng-options="estado as estado.nome for estado in estadosCidades">
+                                        <select id="estado" ng-model="novoCrime.estadoSelecionado" ng-options="estado as estado.nome for estado in estadosCidades" required>
 
                                         </select>
                                     </div>
@@ -97,7 +95,7 @@
                                 <div class="form-group col-md-12">
                                     <label class="col-md-6 control-label">Cidade</label>
                                     <div class="col-sm-6">
-                                        <select id="cidade" ng-model="novoCrime.cidadeSelecionada" ng-options="cidade for cidade in estadoSelecionado.cidades">
+                                        <select id="cidade" ng-model="novoCrime.cidadeSelecionada" ng-options="cidade for cidade in novoCrime.estadoSelecionado.cidades" required>
 
                                         </select>
                                     </div>
@@ -105,13 +103,47 @@
                                 <div class="form-group col-md-12">
                                     <label class="col-md-6 control-label">Rua</label>
                                     <div class="col-sm-6">
-                                        <input type="text" ng-model="novoCrime.rua">
+                                        <input type="text" ng-model="novoCrime.rua" required>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label class="col-md-6 control-label">Data</label>
+                                    <div class="col-sm-6">
+                                        <input type="date" ng-model="novoCrime.data" required>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            </div>
                         </form>
-                        <div class="modal-footer">
-                            <button ng-click="" type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Modal -->
+
+
+        <!-- Modal -->
+        <div class="col-md-12" ng-controller="AppController">
+            <div class="modal fade" id="modalErro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">Erro!</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal">
+                                <label class="col-md-6 control-label">Ocorreu um erro ao tentar gravar o registro no banco. Tente novamente!</label>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" ng-click="fechaModalErro()">Fechar</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -119,4 +151,29 @@
         </div>
         <!-- /Modal -->
 
+        <!-- Modal -->
+        <div class="col-md-12" ng-controller="AppController">
+            <div class="modal fade" id="modalSucesso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">Crime Cadastrado com Sucesso!</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal">
+                                <label class="col-md-6 control-label">Seu registro foi cadastrado com sucesso!</label>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" ng-click="fechaModalSucesso()">OK</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Modal -->
 </body>
