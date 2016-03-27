@@ -1,6 +1,7 @@
 angular
     .module('wiki-crimes', ['angular-meteor', 'accounts.ui', 'ngMap'])
     .controller('CrimeController', ['$scope', '$http', function ($scope, $http) {
+        'use strict';
 
         $scope.estadoSelecionado = {
             cidades: []
@@ -14,15 +15,15 @@ angular
 
         $scope.fechaModal = function () {
             $('#myModal').modal('hide');
-        }
+        };
 
         $scope.fechaModalErro = function () {
             $('#modalErro').modal('hide');
-        }
+        };
 
         $scope.fechaModalSucesso = function () {
             $('#modalSucesso').modal('hide');
-        }
+        };
 
         $scope.novoCrime = {};
 
@@ -38,11 +39,14 @@ angular
             }, function (err) {
                 if (err) {
                     $('#modalErro').modal();
-                } else $('#modalSucesso').modal();
+                } else {
+                    $('#modalSucesso').modal();
+                }
             });
-        }
+        };
     }])
     .controller('MapaController', ['$scope', 'NgMap', function ($scope, NgMap) {
+        'use strict';
 
         $scope.mapLocation = 'Brasil';
 
@@ -111,7 +115,7 @@ angular
                 return Crimes.find({
                     tipoCrime: 'atentadoPudor'
                 }).fetch().length;
-            },
+            }
 
         });
 
@@ -120,6 +124,6 @@ angular
         $scope.pesquisaCrime = function () {
             $scope.mapLocation = $scope.locationDigitado;
             $scope.zoom = 19;
-        }
+        };
 
-    }])
+    }]);
