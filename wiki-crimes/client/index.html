@@ -2,6 +2,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Wiki Crimes</title>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
 </head>
 
 <body ng-app="wiki-crimes">
@@ -35,14 +36,45 @@
 
     <main>
         <div class="container content">
-            <div ng-if="currentUser">
-                <div>
-                    teste
-                </div>
-            </div>
-            <div ng-if="!currentUser">
-                <div>
-                    teste
+            <div class="row">
+                <div ng-controller="MapaController">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Crimes registrados
+                                <form ng-submit="pesquisaCrime()">
+                                    <div class="input-group col-md-4 col-md-offset-4">
+                                        <input ng-model="locationDigitado" type="text" class="form-control" placeholder="Pesquisar por endereço">
+                                        <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit">Pesquisar</button>
+                                    </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="panel-body">
+                                <ng-map zoom="{{zoom}}" center="{{mapLocation}}">
+                                    <marker position="{{crimes.rua}}, {{crimes.cidade}}, {{crimes.estado}}" ng-repeat="crimes in crimesCadastrados">
+                                    </marker>
+                                </ng-map>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="col-md-offset-4 col-xs-6 col-sm-3">
+                                    <p>Furto: {{crimesCadastradosFurto/crimesCadastrados.length*100 | number:2 }} %</p>
+                                    <p>Roubo {{crimesCadastradosRoubo/crimesCadastrados.length*100 | number:2 }} %</p>
+                                    <p>Tentativa de Furto {{crimesCadastradosTentativaFurto/crimesCadastrados.length*100 | number:2 }} %</p>
+                                    <p>Tentativa de Roubo {{crimesCadastradosTentativaRoubo/crimesCadastrados.length*100 | number:2 }} %</p>
+                                </div>
+                                <div class="col-xs-6 col-sm-3">
+                                    <p>Outros:</p>
+                                    <p>Violência {{crimesCadastradosViolencia/crimesCadastrados.length*100 | number:2 }} %</p>
+                                    <p>Violência Domestica {{crimesCadastradosViolenciaDomestica/crimesCadastrados.length*100 | number:2 }} %</p>
+                                    <p>Abuso de autoridade {{crimesCadastradosAbusoAutoridade/crimesCadastrados.length*100 | number:2 }} %</p>
+                                    <p>Homicidio {{crimesCadastradosHomicidio/crimesCadastrados.length*100 | number:2 }} %</p>
+                                    <p>Latrocinio {{crimesCadastradosLatrocinio/crimesCadastrados.length*100 | number:2 }} %</p>
+                                    <p>Atentado ao Pudor {{crimesCadastradosAtentadoPudor/crimesCadastrados.length*100 | number:2 }} %</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
