@@ -1,1 +1,3 @@
-# pre-hackathon-app2
+# Wiki-Crimes
+
+Toy app for studies.
